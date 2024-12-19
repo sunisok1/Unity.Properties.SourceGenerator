@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <RootNamespace>Unity.Properties.SourceGenerator.Sample</RootNamespace>
+        <LangVersion>9</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Analyzer Include="../Unity.Properties.SourceGenerator/bin/Debug/netstandard2.0/Unity.Properties.SourceGenerator.dll"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Unity.Properties.SourceGenerator\Unity.Properties.SourceGenerator.csproj" />
+    </ItemGroup>
+
+</Project>

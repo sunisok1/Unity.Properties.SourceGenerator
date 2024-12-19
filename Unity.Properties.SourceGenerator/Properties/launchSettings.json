@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DebugRoslynSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../Unity.Properties.SourceGenerator.Sample/Unity.Properties.SourceGenerator.Sample.csproj"
+    }
+  }
+}
