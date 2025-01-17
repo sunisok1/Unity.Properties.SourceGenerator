@@ -22,17 +22,25 @@ namespace Unity.Properties.SourceGenerator
             foreach (var tree in context.Compilation.SyntaxTrees)
             {
                 var model = context.Compilation.GetSemanticModel(tree);
-                foreach (var classDeclaration in tree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>())
+                var classDeclarationSyntaxes = tree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>();
+
+
+                foreach (var classDeclaration in classDeclarationSyntaxes)
                 {
                     var attributes = classDeclaration.AttributeLists
                         .SelectMany(list => list.Attributes)
                         .Where(attribute =>
                             model.GetSymbolInfo(attribute).Symbol is IMethodSymbol methodSymbol &&
                             SymbolEqualityComparer.Default.Equals(methodSymbol.ContainingType, requireServiceAttributeSymbol)
-                        );
+                        ).ToList();
+
+                    if (attributes.Count == 0)
+                    {
+                        continue;
+                    }
 
                     var sourceCode = GeneratePartialCode(classDeclaration, attributes, model);
-                    context.AddSource("GeneratedRequireServiceCode.g.cs", SourceText.From(sourceCode, Encoding.UTF8));
+                    context.AddSource($"{classDeclaration.Identifier.Text}.RequireService.g.cs", SourceText.From(sourceCode, Encoding.UTF8));
                 }
             }
         }

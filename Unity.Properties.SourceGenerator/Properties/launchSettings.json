@@ -4,6 +4,10 @@
     "DebugRoslynSourceGenerator": {
       "commandName": "DebugRoslynComponent",
       "targetProject": "../Unity.Properties.SourceGenerator.Sample/Unity.Properties.SourceGenerator.Sample.csproj"
+    },
+    "DebugGameProject": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../../GameEngine/Assembly-CSharp.csproj"
     }
   }
 }
